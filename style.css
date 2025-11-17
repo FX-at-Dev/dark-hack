@@ -1,8 +1,3 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -535,6 +530,182 @@ body {
     z-index: -1;
     transform-origin: center;
     transition: all .35s ease-in-out;
+}
+
+/* ---------- New Sections: About / Why / Testimonials / FAQ / CTA (Pricing removed) ---------- */
+.about__inner{
+  display:flex;
+  flex-direction:column;
+  gap:3rem;
+  margin-top:10rem;
+}
+.about__lead{
+  font-size:1.6rem;
+  font-weight:300;
+  line-height:1.8;
+  max-width:65ch;
+}
+.about__highlights{
+  margin-top:2rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.6rem 3rem;
+  list-style:none;
+}
+.about__highlights li{
+  font-weight:700;
+  color:#59FFB9;
+  font-size:1.4rem;
+}
+
+.about__card{
+  background:#1b1b1b;
+  padding:2.4rem;
+  border-radius:12px;
+  border:1px solid rgba(89,255,185,0.06);
+  display:flex;
+  flex-direction:column;
+  gap:1.2rem;
+  max-width:420px;
+}
+
+.why__grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2.4rem;
+  margin-top:10rem;
+}
+.why__item h4{
+  font-size:1.6rem;
+  font-weight:800;
+  color:#00FF94;
+  margin-bottom:.6rem;
+}
+.why__item p{
+  font-weight:600;
+  line-height:1.6;
+}
+
+/* Testimonials */
+.testimonials__wrap{
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+  margin-top:10rem;
+}
+.testimonials__track{
+  display:flex;
+  overflow:hidden;
+  width:100%;
+  scroll-behavior:smooth;
+  transition:transform .45s cubic-bezier(.22,.9,.27,1);
+}
+.testimonial{
+  min-width:100%;
+  padding:2rem;
+  background:#161616;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.testimonial__text{
+  font-size:1.6rem;
+  font-weight:300;
+  line-height:1.8;
+  margin-bottom:1.2rem;
+  color: white;
+}
+.testimonial__author{
+  font-weight:700;
+  color:#59FFB9;
+}
+.testimonials__nav{
+  border:none;
+  background:transparent;
+  font-size:2.2rem;
+  cursor:pointer;
+  color:#59FFB9;
+  width:44px;
+  height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  transition:transform .15s ease;
+}
+.testimonials__nav:hover{ transform:scale(1.05); }
+
+/* FAQ */
+.faq__list{
+  margin-top:3rem;
+  max-width:900px;
+  width:100%;
+}
+.faq__item{
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:1rem;
+  border:1px solid rgba(255,255,255,0.03);
+  background:#101010;
+}
+.faq__q{
+  width:100%;
+  text-align:left;
+  padding:1.4rem 1.6rem;
+  font-weight:800;
+  font-size:1.4rem;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color: #59FFB9;
+}
+.faq__a{
+  padding:1.2rem 1.6rem;
+  font-weight:600;
+  line-height:1.7;
+  display:none;
+  border-top:1px solid rgba(255,255,255,0.02);
+}
+.faq__item.open .faq__a{ display:block; }
+.faq__icon{ font-weight:900; }
+
+/* CTA */
+.cta__box{
+  background: linear-gradient(180deg, rgba(11,11,11,0.6), rgba(11,11,11,0.2));
+  padding:2.8rem;
+  border-radius:12px;
+  display:flex;
+  gap:1.2rem;
+  flex-direction:column;
+  align-items:flex-start;
+  margin-top:2.4rem;
+  border:1px solid rgba(89,255,185,0.04);
+}
+.cta__title{ font-size:2.2rem; font-weight:900; }
+.cta__lead{ font-weight:600; }
+
+/* Buttons */
+.btn{ text-decoration:none; color:inherit; }
+.btn--ghost{ background:transparent; border:1px solid rgba(255,255,255,0.03); padding:1rem 1.2rem; border-radius:8px; font-weight:800; }
+.btn--primary{
+  background:#37AE7C;
+  color:#fff;
+  padding:1rem 1.6rem;
+  border-radius:7px;
+  text-decoration:none;
+  display:inline-block;
+  font-weight:800;
+}
+
+/* Responsive layout */
+@media only screen and (min-width: 48em) {
+  .about__inner{ flex-direction:row; justify-content:space-between; align-items:flex-start; }
+  .about__left{ flex:1; padding-right:3rem; }
+  .about__right{ width:360px; flex:0 0 360px; }
+  .why__grid{ grid-template-columns:repeat(2,1fr); }
+  .testimonials__track{ width:calc(100% - 110px); } /* account for nav buttons */
 }
 
 /*
