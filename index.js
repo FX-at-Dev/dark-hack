@@ -19,6 +19,7 @@
   const TESTIMONIAL_PREV = document.querySelector('.testimonials__nav--prev');
   const TESTIMONIAL_NEXT = document.querySelector('.testimonials__nav--next');
   const FAQ_ITEMS = Array.from(document.querySelectorAll('.faq__item'));
+  const WORK_BOXES = Array.from(document.querySelectorAll('.work__box'));
 
   const ACTIVE_LINK_CLASS = 'active';
   const BREAKPOINT = 576; // px
@@ -156,7 +157,6 @@
     teamCards.forEach(card => {
       let touchTimer = null;
       card.addEventListener('touchstart', (e) => {
-        // short delay to allow scrolling vs tap; we simply toggle overlay class
         if (touchTimer) clearTimeout(touchTimer);
         touchTimer = setTimeout(() => {
           card.classList.toggle('team-card--toggled');
@@ -184,6 +184,38 @@
           e.preventDefault();
           btn.click();
         }
+      });
+    });
+  })();
+
+  /* -------------------------
+   * Optional: make the work card blur respond to mouse movement
+   * (lightweight, works without changing HTML)
+   * ------------------------- */
+  (function initWorkHoverGlow() {
+    if (!WORK_BOXES || WORK_BOXES.length === 0) return;
+
+    WORK_BOXES.forEach(box => {
+      // defaults
+      box.style.setProperty('--fx-glow-x', '8%');
+      box.style.setProperty('--fx-glow-y', '12%');
+
+      box.addEventListener('mouseenter', (e) => {
+        box.classList.add('work--hovering');
+      });
+
+      box.addEventListener('mousemove', (e) => {
+        const rect = box.getBoundingClientRect();
+        const left = e.clientX - rect.left; // x relative to box
+        const top = e.clientY - rect.top;   // y relative to box
+        box.style.setProperty('--fx-glow-x', left + 'px');
+        box.style.setProperty('--fx-glow-y', top + 'px');
+      });
+
+      box.addEventListener('mouseleave', () => {
+        box.classList.remove('work--hovering');
+        box.style.setProperty('--fx-glow-x', '8%');
+        box.style.setProperty('--fx-glow-y', '12%');
       });
     });
   })();
