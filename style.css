@@ -569,76 +569,117 @@ body {
   max-width:420px;
 }
 
-/* TEAM SECTION (same style as services) */
-.team-cards {
-    margin-top: 10rem;
-    display: flex;
-    flex-direction: column;
+/* Team card image fill + slide-up overlay (matches service card style) */
+.team-card {
+  /* try to keep consistent with your .service-card__box */
+  border: 2px solid #00372b;
+  padding: 1.6rem;              /* this is the equal inner margin (top/left/right) */
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.01));
 }
 
-.team-card__box {
-    margin-bottom: 7rem;
-    border: 2px solid #00372b;
-    padding: 1.5rem;
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
+/* inner container to allow easier sizing and overlay stacking */
+.team-card__inner {
+  position: relative;
+  width: 100%;
+  height: 360px; /* adjust height as needed */
+  border-radius: 12px;
+  overflow: hidden;
+  display:block;
 }
 
-.team-card__illustration {
-    display: flex;
-    width: 250px;
+/* The photo fills the inner box completely */
+.team-card__img {
+  position: absolute;
+  inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* cover the entire area while keeping aspect */
+  display: block;
+  transform: scale(1);
+  transition: transform .6s cubic-bezier(.22,.9,.27,1);
+  border-radius: 12px;
+  will-change: transform;
 }
 
-/* Make team images circular or square?  
-   Optional: Uncomment one of these */
-
-/* CIRCLE version */
-/*
-.team-card__illustration img {
-    width: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-*/
-
-/* SQUARE version (MATCH services style) */
-.team-card__illustration img {
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
+/* decorative blurred floating bg circle (optional — re-uses service-card__bg) */
+.team-card .service-card__bg {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #00FF94;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(30px);
+  transform: translate(-50%, -50%);
 }
 
-.team-card__box .service-card__bg {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #00FF94;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(30px);
-    transform: translate(-50%, -50%);
+/* Sliding overlay - initially hidden below card */
+.team-card__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.6rem;
+  transform: translateY(100%);   /* start off-screen */
+  transition: transform .5s cubic-bezier(.22,.9,.27,1), opacity .35s ease;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(2,2,2,0.75));
+  color: #fff;
+  z-index: 5;
+  opacity: 0;
+  display:flex;
+  flex-direction:column;
+  gap:0.25rem;
 }
 
-/* Responsive layout — same as services */
-@media only screen and (min-width: 48em) {
-    .team-cards {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 100%;
-    }
-    .team-card__box {
-        width: 28%;
-        max-width: 350px;
-    }
-    .team-card__illustration {
-        width: 100%;
-        max-width: 150px;
-        height: 150px;
-    }
+/* Text styles */
+.team-card__name {
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #00FF94; /* match theme */
+  margin: 0;
+}
+.team-card__role {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0;
+}
+
+/* Hover / focus behavior: image slightly zooms, overlay slides in */
+.team-card:hover .team-card__img,
+.team-card:focus-within .team-card__img {
+  transform: scale(1.06);
+}
+
+.team-card:hover .team-card__overlay,
+.team-card:focus-within .team-card__overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* keyboard and touch accessibility: make overlay visible when card receives focus */
+.team-card a,
+.team-card button {
+  outline: none;
+}
+
+.team-card.team-card--toggled .team-card__overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Responsive: smaller card height on small screens */
+@media (max-width: 47.99em) {
+  .team-card__inner { height: 300px; }
+}
+@media (min-width: 48em) {
+  /* if used in 3-column layout, it's fine — height controls consistency */
+  .team-card__inner { height: 360px; }
 }
 
 

@@ -149,6 +149,23 @@
     // ignore
   }
 
+  /* Team card tap-to-toggle for touch devices (optional) */
+  (function() {
+    const teamCards = document.querySelectorAll('.team-card');
+    if (!teamCards.length) return;
+    teamCards.forEach(card => {
+      let touchTimer = null;
+      card.addEventListener('touchstart', (e) => {
+        // short delay to allow scrolling vs tap; we simply toggle overlay class
+        if (touchTimer) clearTimeout(touchTimer);
+        touchTimer = setTimeout(() => {
+          card.classList.toggle('team-card--toggled');
+          touchTimer = null;
+        }, 150);
+      });
+    });
+  })();
+
   /* -------------------------
    * FAQ accordion (single-open)
    * ------------------------- */
