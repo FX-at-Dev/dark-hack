@@ -569,6 +569,79 @@ body {
   max-width:420px;
 }
 
+/* TEAM SECTION (same style as services) */
+.team-cards {
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-card__box {
+    margin-bottom: 7rem;
+    border: 2px solid #00372b;
+    padding: 1.5rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card__illustration {
+    display: flex;
+    width: 250px;
+}
+
+/* Make team images circular or square?  
+   Optional: Uncomment one of these */
+
+/* CIRCLE version */
+/*
+.team-card__illustration img {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+*/
+
+/* SQUARE version (MATCH services style) */
+.team-card__illustration img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.team-card__box .service-card__bg {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #00FF94;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(30px);
+    transform: translate(-50%, -50%);
+}
+
+/* Responsive layout — same as services */
+@media only screen and (min-width: 48em) {
+    .team-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .team-card__box {
+        width: 28%;
+        max-width: 350px;
+    }
+    .team-card__illustration {
+        width: 100%;
+        max-width: 150px;
+        height: 150px;
+    }
+}
+
+
 .why__grid{
   display:grid;
   grid-template-columns:1fr;
@@ -585,54 +658,6 @@ body {
   font-weight:600;
   line-height:1.6;
 }
-
-/* Testimonials */
-.testimonials__wrap{
-  display:flex;
-  align-items:center;
-  gap:1.2rem;
-  margin-top:10rem;
-}
-.testimonials__track{
-  display:flex;
-  overflow:hidden;
-  width:100%;
-  scroll-behavior:smooth;
-  transition:transform .45s cubic-bezier(.22,.9,.27,1);
-}
-.testimonial{
-  min-width:100%;
-  padding:2rem;
-  background:#161616;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,0.02);
-}
-.testimonial__text{
-  font-size:1.6rem;
-  font-weight:300;
-  line-height:1.8;
-  margin-bottom:1.2rem;
-  color: white;
-}
-.testimonial__author{
-  font-weight:700;
-  color:#59FFB9;
-}
-.testimonials__nav{
-  border:none;
-  background:transparent;
-  font-size:2.2rem;
-  cursor:pointer;
-  color:#59FFB9;
-  width:44px;
-  height:44px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  transition:transform .15s ease;
-}
-.testimonials__nav:hover{ transform:scale(1.05); }
 
 /* FAQ */
 .faq__list{
