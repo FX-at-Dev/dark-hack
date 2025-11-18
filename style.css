@@ -74,6 +74,22 @@ body {
     font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.coursor{
+    height: 20px;
+    width: 20px;
+    background-color: #00FF94;
+    border-radius: 50%;
+    /* box-shadow: 0 0 15px 5px rgb(255, 255, 255); */
+    position: fixed;
+    font-size: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9;
+    filter: blur(5px);
+}
+
 .container {
     display: block;
     margin-left: auto;
@@ -641,6 +657,7 @@ body {
   position: relative;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.01));
+  width: 15em;
 }
 
 .team-card__inner {
@@ -736,6 +753,7 @@ body {
   .team-card__inner { height: 360px; }
 }
 
+/* Why choose us */
 .why__grid{
   display:grid;
   grid-template-columns:1fr;
@@ -851,6 +869,81 @@ body {
  * Small Screen -- 576px
  * ========================
  */
+ /* Fix team card overflow/stretch on phones */
+/* === Fix: force team card / service card box to 15em on small phones === */
+@media (max-width: 430px) {
+
+  /* target both possible class names: .team-card and .team__card */
+  .team-card,
+  .team__card {
+    width: 15em !important;
+    max-width: 15em !important;
+    margin: 1.2rem auto !important;
+    padding: 1rem !important;
+
+    /* prevent stretching */
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+
+    /* layout */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* If service-card__box sits inside team card or is used standalone */
+  .service-card__box,
+  .team-card .service-card__box,
+  .team__card .service-card__box {
+    width: 15em !important;
+    max-width: 15em !important;
+    padding: 0.8rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* images: fit inside 15em, don't create vertical overflow */
+  .team-card__img,
+  .team__avatar img,
+  .team-card img,
+  .team__card img,
+  .service-card__box img,
+  .work__img-box img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 22em !important;     /* prevents extremely tall images */
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 12px !important;
+  }
+
+  /* hide glow pseudo-elements that can form long vertical bars */
+  .team-card::before,
+  .team__card::before,
+  .service-card__box::before,
+  .work__box::before,
+  .team-card::after,
+  .team__card::after,
+  .service-card__box::after {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+  }
+
+  /* make sure the grid collapses to single column around this width */
+  .team__grid,
+  .team-grid,
+  .works {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+
 @media only screen and (min-width: 36em) {
     .container {
         max-width: 540px;
@@ -937,7 +1030,7 @@ body {
     .section__title{
         font-size: 8rem;
     }
-
+    
     /* Make room for 3 cards per row: use 30% width + gaps */
     .works{
         justify-content: space-between;

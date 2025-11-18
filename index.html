@@ -9,6 +9,8 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://unpkg.com/sweet-scroll/sweet-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- CSS & JS -->
     <link rel="stylesheet" href="./style.css"/>
@@ -36,6 +38,8 @@
 </head>
 <body>
 <main>
+    <div class="coursor">
+    </div>
     <!-- Hero Header -->
     <header id="heroHeader" class="hero-header">
         <nav id="navBar" class="nav">
@@ -127,7 +131,7 @@
                 <a class="work__link" href="https://sellkaroonline.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Agency Landing Page in a new tab">
                     <div class="work__box">
                         <span class="work__img-box">
-                            <img src="./assets/works/sample.png" alt="My Work 1"/>
+                            <img src="./assets/works/work1.png" alt="My Work 1"/>
                         </span>
                         <h3 class="work__title">Agency Landing Page</h3>
                         <span class="work__badges">
@@ -140,16 +144,16 @@
             </article>
 
             <article class="work">
-                <a class="work__link" href="https://example.com/work-ecommerce" target="_blank" rel="noopener noreferrer" aria-label="Open E-commerce UI in a new tab">
+                <a class="work__link" href="https://indiancs.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open E-commerce UI in a new tab">
                     <div class="work__box">
                         <span class="work__img-box">
-                            <img src="./assets/works/sample.png" alt="Public Service Website"/>
+                            <img src="./assets/works/work2.png" alt="Public Service Website"/>
                         </span>
                         <h3 class="work__title">Public Service Website</h3>
                         <span class="work__badges">
-                            <span class="work__badge">React</span>
-                            <span class="work__badge">Sass</span>
-                            <span class="work__badge">Netlify</span>
+                            <span class="work__badge">HTML</span>
+                            <span class="work__badge">CSS</span>
+                            <span class="work__badge">JAVASCRIPT</span>
                         </span>
                     </div>
                 </a>
@@ -159,7 +163,7 @@
                 <a class="work__link" href="https://www.yakaawa.com/in" target="_blank" rel="noopener noreferrer" aria-label="Open Portfolio Redesign in a new tab">
                     <div class="work__box">
                         <span class="work__img-box">
-                            <img src="./assets/works/sample.png" alt="Portfolio Redesign"/>
+                            <img src="./assets/works/work3.png" alt="Portfolio Redesign"/>
                         </span>
                         <h3 class="work__title">e-Commerce</h3>
                         <span class="work__badges">
@@ -187,8 +191,8 @@
           </p>
 
           <ul class="about__highlights">
-            <li><strong>4+ years</strong> combined experience</li>
-            <li><strong>30+</strong> projects delivered</li>
+            <li><strong>1+ years</strong> combined experience</li>
+            <li><strong>10+</strong> projects</li>
             <li><strong>Client-focused</strong> design & support</li>
             <li><strong>Performance-first</strong> development</li>
           </ul>
@@ -215,7 +219,7 @@
                 <div class="team-card__inner">
                     <!-- Image fills the card area (respecting padding) -->
                     <img class="team-card__img"
-                        src="./assets/team/member1.jpg"
+                        src="./assets/team/member1.png"
                         alt="Himanshu Pathak — Lead Developer" />
 
                     <!-- Overlay that slides in from bottom -->
@@ -232,7 +236,7 @@
                 <div class="team-card__inner">
                     <!-- Image fills the card area (respecting padding) -->
                     <img class="team-card__img"
-                        src="./assets/team/member2.jpg"
+                        src="./assets/team/member2.png"
                         alt="Raj Yadav — Frontend Developer" />
 
                     <!-- Overlay that slides in from bottom -->
@@ -254,7 +258,7 @@
 
                     <!-- Overlay that slides in from bottom -->
                     <div class="team-card__overlay" aria-hidden="true">
-                    <h3 class="team-card__name">FX</h3>
+                    <h3 class="team-card__name">Harish Kumar Rai</h3>
                     <p class="team-card__role">Backend Developer</p>
                     <span class="service-card__bg"></span>
                     </div>

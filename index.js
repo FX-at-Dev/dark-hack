@@ -233,3 +233,41 @@
   window.__fx_resetMobileNav = resetActiveState;
 
 })();
+var main = document.querySelector(".main")
+  var coursor = document.querySelector(".coursor")
+  window.addEventListener("mousemove",function(move){
+    gsap.to(coursor,{
+        x:move.clientX,
+        y:move.clientY,
+        duration:0.5,
+        ease:"power2.out",
+        
+    })
+})
+gsap.from(".service-card__box",{
+    opacity:0,
+    duration:1,
+    y:500,
+    stagger:0.1,
+    scrollTrigger:{
+        trigger:".service-card__box",
+        scroller:"body",
+        // scrub:1
+        start:"top 150%",
+        // markers:true
+    }
+})
+gsap.from(".work",{
+    opacity:0,
+    delay:0.4,
+    duration:1,
+    y:300,
+    stagger:0.1,
+    scrollTrigger:{
+        trigger:".work",
+        scroller:"body",
+        // scrub:1
+        start:"top 140%",
+        // markers:true
+    }
+})
